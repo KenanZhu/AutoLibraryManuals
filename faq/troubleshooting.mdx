@@ -1,14 +1,16 @@
 ---
-title: "常见问题"
-description: "AutoLibrary 故障排除与使用问答"
-icon: "circle-question"
+title: "疑难解答"
+description: "AutoLibrary 故障排除与常见问题解决方法"
 ---
 
-## 故障排除
+## 工具启动时报错"无法找到驱动"
 
-### 工具启动时报错"无法找到驱动"
+<Note>
+  这大概率是因为浏览器驱动未正确安装或版本不匹配。
 
-<Note>这大概率是因为浏览器驱动未正确安装或版本不匹配。</Note>
+  因此我们强烈建议使用 AutoLibrary 的[浏览器驱动自动下载功能](/installation/driver#%E6%96%B9%E5%BC%8F%E4%B8%80%EF%BC%9A%E4%BD%BF%E7%94%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E9%A9%B1%E5%8A%A8%E8%87%AA%E5%8A%A8%E4%B8%8B%E8%BD%BD%E5%8A%9F%E8%83%BD%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89)。
+  这可以很大程度上减少此类问题的发生。
+</Note>
 
 <Steps>
   <Step title="检查驱动位置">
@@ -18,11 +20,11 @@ icon: "circle-question"
     驱动版本必须与浏览器版本完全匹配（如 Chrome 需对应版本的 `chromedriver.exe`，切勿混用）。
   </Step>
   <Step title="重新安装驱动">
-    使用 [浏览器驱动自动下载功能](/installation#方式一使用浏览器驱动自动下载功能推荐) 重新安装。
+    使用浏览器驱动自动下载窗口重新安装。
   </Step>
 </Steps>
 
-### 登录失败，提示账号密码错误
+## 登录失败，提示账号密码错误
 
 请检查配置界面中的账号密码是否正确。
 
@@ -38,7 +40,7 @@ icon: "circle-question"
   </Step>
 </Steps>
 
-### 预约失败，提示座位不可用
+## 预约失败，提示座位不可用
 
 目标座位可能已被他人预约或不在可预约时间。
 
@@ -51,7 +53,7 @@ icon: "circle-question"
   </Step>
 </Steps>
 
-### 定时任务显示"已就绪"或"执行中"且无法删除
+## 定时任务显示"已就绪"或"执行中"且无法删除
 
 <Warning>
   此解决方法需要直接操作 AutoLibrary 的核心配置文件，需要操作者对 JSON 文件格式有一定了解。**操作前请务必备份相关文件**，以免误操作导致配置丢失。
@@ -87,21 +89,3 @@ icon: "circle-question"
 </Steps>
 
 <Tip>如果操作后 JSON 格式出错，软件可能会覆写原有配置文件。请确保备份，并检查 JSON 语法是否正确（注意最后一个元素后不要有多余的逗号）。</Tip>
-
-## 常见问题
-
-<AccordionGroup>
-  <Accordion title="使用 AutoLibrary 是否安全？">
-    AutoLibrary 完全模拟人工操作，不干扰图书馆系统正常运行。工具**不会收集或上传您的个人信息**，所有数据仅保存在本地配置文件中。
-  </Accordion>
-
-  <Accordion title="可以同时预约多个座位吗？">
-    根据图书馆规定，每个账号同一时间段只能预约一个座位。但您可以在配置中添加多个账号，工具会依次处理每个账号的预约请求。
-
-    <Warning>本工具旨在辅助用户正常使用图书馆服务，请勿滥用影响他人及图书馆正常运行。</Warning>
-  </Accordion>
-
-  <Accordion title="工具运行期间可以操作电脑吗？">
-    可以正常使用电脑，但请**勿操作工具自动打开的浏览器窗口**，否则可能会干扰工具正常运行。如需完全后台运行，可启用无头模式并最小化到托盘。
-  </Accordion>
-</AccordionGroup>

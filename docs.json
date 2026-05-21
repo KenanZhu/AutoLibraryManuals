@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
+  "theme": "almond",
   "name": "AutoLibrary",
   "colors": {
     "primary": "#0EA5E9",
@@ -11,30 +11,39 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "用户手册",
+        "tab": "用户手册 v1.3.0",
         "groups": [
           {
             "group": "安装",
+            "icon": "download",
             "pages": [
-              "installation"
+              "installation/install",
+              "installation/driver"
             ]
           },
           {
             "group": "配置",
+            "icon": "sliders",
             "pages": [
-              "configuration"
+              "configuration/start",
+              "configuration/ui",
+              "configuration/file"
             ]
           },
           {
             "group": "功能",
+            "icon": "bolt",
             "pages": [
-              "introduction"
+              "features/core",
+              "features/timer"
             ]
           },
           {
             "group": "FAQ",
+            "icon": "circle-question",
             "pages": [
-              "troubleshooting"
+              "faq/troubleshooting",
+              "faq/faq"
             ]
           }
         ]
@@ -43,18 +52,13 @@
     "global": {
       "anchors": [
         {
-          "anchor": "下载",
-          "href": "https://autolibrary.kenanzhu.com/downloads",
-          "icon": "download"
+          "anchor": "Support",
+          "href": "mailto:nanoki_zh@163.com",
+          "icon": "envelope"
         },
         {
-          "anchor": "更新日志",
-          "href": "https://autolibrary.kenanzhu.com/changelog",
-          "icon": "clock"
-        },
-        {
-          "anchor": "GitHub",
-          "href": "https://github.com/AutoLibrary",
+          "anchor": "Github Issues",
+          "href": "https://github.com/KenanZhu/AutoLibrary/issues",
           "icon": "github"
         }
       ]
@@ -67,29 +71,33 @@
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:nanoki_zh@163.com"
+        "label": "下载",
+        "href": "https://autolibrary.kenanzhu.com/downloads",
+        "icon": "download"
+      },
+      {
+        "label": "更新日志",
+        "href": "https://autolibrary.kenanzhu.com/changelog",
+        "icon": "clock"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/KenanZhu/AutoLibrary",
+        "icon": "github"
       }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "下载",
-      "href": "https://autolibrary.kenanzhu.com/downloads"
-    }
+    ]
   },
   "contextual": {
     "options": [
       "copy",
       "view",
-      "chatgpt",
       "claude",
-      "cursor",
       "vscode"
     ]
   },
   "footer": {
     "socials": {
-      "github": "https://github.com/AutoLibrary"
+      "github": "https://github.com/KenanZhu/AutoLibrary"
     }
   }
 }
