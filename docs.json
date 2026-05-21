@@ -33,17 +33,6 @@
             ]
           }
         ]
-      },
-      {
-        "tab": "AutoScript",
-        "groups": [
-          {
-            "group": "脚本参考",
-            "pages": [
-              "autoscript"
-            ]
-          }
-        ]
       }
     ],
     "global": {
