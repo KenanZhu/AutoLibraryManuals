@@ -14,21 +14,25 @@
         "tab": "用户手册",
         "groups": [
           {
-            "group": "快速入门",
+            "group": "安装",
             "pages": [
-              "introduction",
               "installation"
             ]
           },
           {
-            "group": "使用指南",
+            "group": "配置",
             "pages": [
-              "configuration",
-              "scheduled-tasks"
+              "configuration"
             ]
           },
           {
-            "group": "帮助支持",
+            "group": "功能",
+            "pages": [
+              "introduction"
+            ]
+          },
+          {
+            "group": "FAQ",
             "pages": [
               "troubleshooting"
             ]
@@ -64,7 +68,7 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:support@autolibrary.kenanzhu.com"
+        "href": "mailto:nanoki_zh@163.com"
       }
     ],
     "primary": {
