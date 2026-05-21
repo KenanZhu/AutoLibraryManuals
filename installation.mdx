@@ -1,0 +1,72 @@
+---
+title: "安装与配置"
+description: "AutoLibrary 下载安装与浏览器驱动配置指南"
+icon: "download"
+---
+
+## 安装工具
+
+### 下载软件
+
+请从 AutoLibrary 下载页面获取最新版本。
+
+<Note>
+  **Github** 下载：更新较为及时，但网络连接不稳定，速度较慢。
+  **云盘下载**：版本更新略有延迟，但下载速度更快。
+</Note>
+
+### 版本类型
+
+从 v1.1.0 版本开始，提供两种版本供您选择：
+
+<Tabs>
+  <Tab title="便携压缩包版本">
+    下载完成后，解压缩文件夹到任意位置，双击运行其中的 `AutoLibrary.exe` 即可启动工具。
+  </Tab>
+  <Tab title="安装器版本">
+    下载完成后，双击运行安装程序，按照提示进行安装。安装完成后可在开始菜单中找到 AutoLibrary。
+  </Tab>
+</Tabs>
+
+<Warning>
+  压缩包内的 `_internal` 文件夹与 `AutoLibrary.exe` 可执行文件需要位于同一目录下，请勿修改或移动这两个文件，否则可能导致工具无法正常运行。
+</Warning>
+
+## 配置浏览器驱动
+
+工具需要通过浏览器驱动来控制浏览器。以下两种方式可以帮助您快速配置驱动：
+
+<Tip>AutoLibrary 支持自动检测本地安装的浏览器，并查找适配的驱动版本，大大简化了配置流程。</Tip>
+
+### 方式一：使用浏览器驱动自动下载功能（推荐）
+
+![浏览器驱动自动下载窗口](/images/v1.2.1/浏览器驱动自动下载窗口.png)
+
+<Steps>
+  <Step title="打开驱动下载窗口">
+    在 AutoLibrary 配置界面中，点击"浏览器驱动自动下载"按钮。
+  </Step>
+  <Step title="选择驱动版本">
+    工具会自动检测您电脑上已安装的浏览器，并列出可用的驱动版本。
+  </Step>
+  <Step title="开始下载">
+    选择需要的浏览器驱动版本，点击"开始下载"按钮。
+
+    ![开始下载浏览器驱动](/images/v1.2.1/浏览器驱动自动下载窗口-开始下载.png)
+  </Step>
+  <Step title="完成配置">
+    下载完成后，点击"确定"保存并退出对话框，即可在配置界面中使用该驱动。
+
+    ![浏览器驱动下载完成](/images/v1.2.1/浏览器驱动自动下载窗口-下载完成.png)
+  </Step>
+</Steps>
+
+### 方式二：手动下载浏览器驱动
+
+如果您仍需手动下载驱动，请根据您使用的浏览器选择对应的驱动：
+
+| 浏览器 | 适用系统 | 下载链接 |
+| --- | --- | --- |
+| Microsoft Edge | Windows 10/11 | [下载 Edge 驱动](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/) |
+| Google Chrome | 跨平台 | [下载 Chrome 驱动](https://developer.chrome.google.cn/docs/chromedriver/downloads) |
+| Mozilla Firefox | 跨平台 | [下载 Firefox 驱动](https://github.com/mozilla/geckodriver/releases) |

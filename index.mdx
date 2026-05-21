@@ -6,95 +6,60 @@ icon: "book-open"
 
 ## 欢迎使用 AutoLibrary
 
-AutoLibrary 是一款专为北京建筑大学图书馆设计的自动化工具，帮助您简化图书馆座位操作流程，节省宝贵时间。
+AutoLibrary 是一款专为北京建筑大学图书馆设计的自动化工具，帮助您简化图书馆座位操作流程。
 
 <Card
-  title="最新版本 v1.3.0"
+  title="新手指南"
   icon="rocket"
-  href="/versions/v1.3.0"
+  href="/introduction"
   horizontal
 >
-  查看最新版本的用户手册，包含定时任务编辑、重复任务等新特性。
+  了解 AutoLibrary 的核心功能：自动预约、自动签到、自动续约与定时任务。
 </Card>
 
-## 主要功能
+## 快速导航
 
-<Columns cols={3}>
+<CardGroup cols={2}>
   <Card
-    title="自动预约"
-    icon="calendar-check"
-    href="/versions/v1.3.0#自动预约"
+    title="安装与配置"
+    icon="download"
+    href="/installation"
   >
-    按配置自动预约指定座位，支持定时任务批量处理。
+    下载安装工具，配置浏览器驱动 —— 支持一键自动下载。
   </Card>
   <Card
-    title="自动签到"
-    icon="clipboard-check"
-    href="/versions/v1.3.0#自动签到"
+    title="配置指南"
+    icon="sliders"
+    href="/configuration"
   >
-    在可签到时间范围内自动完成签到，避免失约。
+    完整参数参考：用户信息、预约参数、系统设置与配置文件详解。
   </Card>
   <Card
-    title="自动续约"
-    icon="rotate-right"
-    href="/versions/v1.3.0#自动续约"
+    title="定时任务"
+    icon="clock"
+    href="/scheduled-tasks"
   >
-    到达可续约时间自动延长座位使用时间。
+    添加、编辑、删除定时任务，支持重复执行与静默运行。
   </Card>
-</Columns>
+  <Card
+    title="故障排除"
+    icon="circle-question"
+    href="/troubleshooting"
+  >
+    常见问题解决方法与 FAQ，快速排查使用问题。
+  </Card>
+</CardGroup>
 
-## 版本手册
+## 核心功能
 
-选择对应您使用的软件版本来查看详细文档：
-
-<Columns cols={2}>
-  <Card
-    title="v1.3.0 (最新)"
-    icon="star"
-    href="/versions/v1.3.0"
-  >
-    定时任务编辑、重复任务、浏览器驱动自动下载。
+<CardGroup cols={3}>
+  <Card title="自动预约" icon="calendar-check" href="/introduction">
+    自动预约指定座位，支持定时任务批量处理。
   </Card>
-  <Card
-    title="v1.2.1"
-    icon="file-lines"
-    href="/versions/v1.2.1"
-  >
-    定时任务、配置文件管理、浏览器驱动自动下载。
+  <Card title="自动签到" icon="clipboard-check" href="/introduction">
+    可签到时间范围内自动签到，避免失约。
   </Card>
-  <Card
-    title="v1.1.0"
-    icon="file-lines"
-    href="/versions/v1.1.0"
-  >
-    双版本类型（完整版/迷你版）、用户分组管理。
+  <Card title="自动续约" icon="rotate-right" href="/introduction">
+    到达可续约时间自动延长使用时间。
   </Card>
-  <Card
-    title="v1.0.5"
-    icon="file-lines"
-    href="/versions/v1.0.5"
-  >
-    运行模式组合优化、界面与配置文件双配置方式。
-  </Card>
-  <Card
-    title="v1.0.0"
-    icon="file-lines"
-    href="/versions/v1.0.0"
-  >
-    首个正式版，支持自动预约/签到/续约、定时任务。
-  </Card>
-  <Card
-    title="早期版本"
-    icon="folder-open"
-    href="/versions/v1.0.0-beta"
-  >
-    v1.0.0-beta、v0.1.0-alpha、v0.0.3-alpha 等早期测试版本。
-  </Card>
-</Columns>
-
-## 快速开始
-
-1. 从 [下载页面](https://autolibrary.kenanzhu.com/downloads) 获取最新版本
-2. 安装浏览器驱动（工具支持自动下载）
-3. 配置学号、密码及预约信息
-4. 点击"开始运行脚本"或设置定时任务
+</CardGroup>

@@ -14,22 +14,23 @@
         "tab": "用户手册",
         "groups": [
           {
-            "group": "总览",
+            "group": "快速入门",
             "pages": [
-              "index"
+              "introduction",
+              "installation"
             ]
           },
           {
-            "group": "版本手册",
+            "group": "使用指南",
             "pages": [
-              "versions/v1.3.0",
-              "versions/v1.2.1",
-              "versions/v1.1.0",
-              "versions/v1.0.5",
-              "versions/v1.0.0",
-              "versions/v1.0.0-beta",
-              "versions/v0.1.0-alpha",
-              "versions/v0.0.3-alpha"
+              "configuration",
+              "scheduled-tasks"
+            ]
+          },
+          {
+            "group": "帮助支持",
+            "pages": [
+              "troubleshooting"
             ]
           }
         ]
