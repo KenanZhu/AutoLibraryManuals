@@ -1,133 +1,111 @@
 ---
-title: "Introduction"
-description: "Welcome to the new home for your documentation"
-icon: 'star'
+title: "AutoLibrary 用户手册"
+description: "北京建筑大学图书馆座位自动化工具 - 简化预约、签到、续约流程"
+icon: "book-open"
 ---
 
-## Setting up
+## 欢迎使用 AutoLibrary
 
-Get your documentation site up and running in minutes.
+AutoLibrary 是一款专为北京建筑大学图书馆设计的自动化工具，帮助您简化图书馆座位操作流程，节省宝贵时间。
 
 <Card
-  title="Start here"
+  title="最新版本 v1.3.0"
   icon="rocket"
-  href="/quickstart"
+  href="/versions/v1.3.0"
   horizontal
 >
-  Follow our three step quickstart guide.
+  查看最新版本的用户手册，包含 AutoScript 脚本编排、定时任务编辑等新特性。
 </Card>
 
-## Make it yours
+## 主要功能
 
-Design a docs site that looks great and empowers your users.
-
-<Columns cols={2}>
+<Columns cols={3}>
   <Card
-    title="Edit locally"
-    icon="pen-to-square"
-    href="/development"
+    title="自动预约"
+    icon="calendar-check"
+    href="/versions/v1.3.0#自动预约"
   >
-    Edit your docs locally and preview them in real time.
+    按配置自动预约指定座位，支持定时任务批量处理。
   </Card>
   <Card
-    title="Customize your site"
-    icon="palette"
-    href="/essentials/settings"
+    title="自动签到"
+    icon="clipboard-check"
+    href="/versions/v1.3.0#自动签到"
   >
-    Customize the design and colors of your site to match your brand.
-  </Card>
-    <Card
-    title="Set up navigation"
-    icon="map"
-    href="/essentials/navigation"
-  >
-    Organize your docs to help users find what they need and succeed with your product.
+    在可签到时间范围内自动完成签到，避免失约。
   </Card>
   <Card
-    title="API documentation"
-    icon="terminal"
-    href="/api-reference/introduction"
+    title="自动续约"
+    icon="rotate-right"
+    href="/versions/v1.3.0#自动续约"
   >
-    Auto-generate API documentation from OpenAPI specifications.
+    到达可续约时间自动延长座位使用时间。
   </Card>
 </Columns>
 
-## Create beautiful pages
+## 版本手册
 
-Everything you need to create world-class documentation.
-
-<Columns cols={2}>
-  <Card
-    title="Write with MDX"
-    icon="pen-fancy"
-    href="/essentials/markdown"
-  >
-    Use MDX to style your docs pages.
-  </Card>
-  <Card
-    title="Code samples"
-    icon="code"
-    href="/essentials/code"
-  >
-    Add sample code to demonstrate how to use your product.
-  </Card>
-  <Card
-    title="Images"
-    icon="image"
-    href="/essentials/images"
-  >
-    Display images and other media.
-  </Card>
-  <Card
-    title="Reusable snippets"
-    icon="recycle"
-    href="/essentials/reusable-snippets"
-  >
-    Write once and reuse across your docs.
-  </Card>
-</Columns>
-
-## Make your content agent ready
-
-Make your docs work for humans and AI agents alike.
+选择对应您使用的软件版本来查看详细文档：
 
 <Columns cols={2}>
   <Card
-    title="Prompt component"
-    icon="robot"
-    href="/agent-ready/prompt"
+    title="v1.3.0 (最新)"
+    icon="star"
+    href="/versions/v1.3.0"
   >
-    Embed shareable AI prompts readers can copy or open in Cursor.
+    AutoScript 编排、定时任务编辑、重复任务、浏览器驱动自动下载。
   </Card>
   <Card
-    title="Visibility"
-    icon="eye"
-    href="/agent-ready/visibility"
+    title="v1.2.1"
+    icon="file-lines"
+    href="/versions/v1.2.1"
   >
-    Show different content to humans and agents reading your docs.
+    定时任务、配置文件管理、浏览器驱动自动下载。
   </Card>
   <Card
-    title="Contextual menu"
-    icon="bolt"
-    href="/agent-ready/contextual"
+    title="v1.1.0"
+    icon="file-lines"
+    href="/versions/v1.1.0"
   >
-    Give readers one-click access to Claude, ChatGPT, Cursor, and more.
+    双版本类型（完整版/迷你版）、用户分组管理。
   </Card>
   <Card
-    title="AI coding tools"
-    icon="wand-magic-sparkles"
-    href="/ai-tools/claude-code"
+    title="v1.0.5"
+    icon="file-lines"
+    href="/versions/v1.0.5"
   >
-    Set up Claude Code, Cursor, or Windsurf with Mintlify's skill.
+    运行模式组合优化、界面与配置文件双配置方式。
+  </Card>
+  <Card
+    title="v1.0.0"
+    icon="file-lines"
+    href="/versions/v1.0.0"
+  >
+    首个正式版，支持自动预约/签到/续约、定时任务。
+  </Card>
+  <Card
+    title="早期版本"
+    icon="folder-open"
+    href="/versions/v1.0.0-beta"
+  >
+    v1.0.0-beta、v0.1.0-alpha、v0.0.3-alpha 等早期测试版本。
   </Card>
 </Columns>
 
-## Need inspiration?
+## AutoScript 脚本
 
 <Card
-  title="See complete examples"
-  icon="stars"
-  href="https://mintlify.com/customers"
+  title="AutoScript 语法参考"
+  icon="code"
+  href="/autoscript"
+  horizontal
 >
-  Browse our showcase of exceptional documentation sites.
+  AutoScript 是一种轻量级脚本语言，专为重复定时任务设计。允许在任务执行前对预约数据进行预处理，实现动态调整参数。
 </Card>
+
+## 快速开始
+
+1. 从 [下载页面](https://autolibrary.kenanzhu.com/downloads) 获取最新版本
+2. 安装浏览器驱动（工具支持自动下载）
+3. 配置学号、密码及预约信息
+4. 点击"开始运行脚本"或设置定时任务
