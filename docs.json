@@ -1,76 +1,71 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "用户手册",
+  "name": "AutoLibrary Manuals",
   "colors": {
     "primary": "#64ffda",
     "light": "#64ffda",
     "dark": "#64ffda"
   },
   "favicon": "/favicon.svg",
+  "fonts": {
+    "family": "Inter"
+  },
   "navigation": {
-    "languages": [
+    "tabs": [
       {
-        "language": "zh",
-        "default": true,
-        "groups": [
+        "tab": "用户手册",
+        "languages": [
           {
-            "group": "概览",
-            "icon": "book-open",
-            "pages": [
-              "zh/index"
-            ]
-          },
-          {
-            "group": "安装",
-            "icon": "download",
-            "pages": [
-              "zh/installation/install",
-              "zh/installation/driver"
-            ]
-          },
-          {
-            "group": "配置",
-            "icon": "sliders",
-            "pages": [
-              "zh/configuration/start",
-              "zh/configuration/ui",
-              "zh/configuration/file"
-            ]
-          },
-          {
-            "group": "功能",
-            "icon": "bolt",
-            "pages": [
-              "zh/features/core",
-              "zh/features/timer"
-            ]
-          },
-          {
-            "group": "FAQ",
-            "icon": "circle-question",
-            "pages": [
-              "zh/faq/troubleshooting",
-              "zh/faq/faq"
+            "language": "zh",
+            "default": true,
+            "groups": [
+              {
+                "group": "开始",
+                "icon": "book-open",
+                "pages": [
+                  "zh/index"
+                ]
+              },
+              {
+                "group": "安装",
+                "icon": "download",
+                "pages": [
+                  "zh/installation/install",
+                  "zh/installation/driver"
+                ]
+              },
+              {
+                "group": "配置",
+                "icon": "sliders",
+                "pages": [
+                  "zh/configuration/start",
+                  "zh/configuration/ui",
+                  "zh/configuration/file"
+                ]
+              },
+              {
+                "group": "功能",
+                "icon": "bolt",
+                "pages": [
+                  "zh/features/core",
+                  "zh/features/timer"
+                ]
+              },
+              {
+                "group": "FAQ",
+                "icon": "circle-question",
+                "pages": [
+                  "zh/faq/troubleshooting",
+                  "zh/faq/faq",
+                  "zh/faq/contact"
+                ]
+              }
             ]
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Support",
-          "href": "mailto:nanoki_zh@163.com",
-          "icon": "envelope"
-        },
-        {
-          "anchor": "Github Issues",
-          "href": "https://github.com/KenanZhu/AutoLibrary/issues",
-          "icon": "github"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
     "light": "/logo/light.svg",
