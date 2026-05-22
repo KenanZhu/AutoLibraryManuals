@@ -1,49 +1,57 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "almond",
-  "name": "AutoLibrary",
+  "theme": "mint",
+  "name": "用户手册",
   "colors": {
-    "primary": "#0EA5E9",
-    "light": "#38BDF8",
-    "dark": "#0284C7"
+    "primary": "#64ffda",
+    "light": "#64ffda",
+    "dark": "#64ffda"
   },
   "favicon": "/favicon.svg",
   "navigation": {
-    "tabs": [
+    "languages": [
       {
-        "tab": "用户手册 v1.3.0",
+        "language": "zh",
+        "default": true,
         "groups": [
+          {
+            "group": "概览",
+            "icon": "book-open",
+            "pages": [
+              "zh/index"
+            ]
+          },
           {
             "group": "安装",
             "icon": "download",
             "pages": [
-              "installation/install",
-              "installation/driver"
+              "zh/installation/install",
+              "zh/installation/driver"
             ]
           },
           {
             "group": "配置",
             "icon": "sliders",
             "pages": [
-              "configuration/start",
-              "configuration/ui",
-              "configuration/file"
+              "zh/configuration/start",
+              "zh/configuration/ui",
+              "zh/configuration/file"
             ]
           },
           {
             "group": "功能",
             "icon": "bolt",
             "pages": [
-              "features/core",
-              "features/timer"
+              "zh/features/core",
+              "zh/features/timer"
             ]
           },
           {
             "group": "FAQ",
             "icon": "circle-question",
             "pages": [
-              "faq/troubleshooting",
-              "faq/faq"
+              "zh/faq/troubleshooting",
+              "zh/faq/faq"
             ]
           }
         ]
