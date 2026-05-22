@@ -9,5 +9,5 @@
     <path d="M0 0 C3 3.33333333 3 3.33333333 3 6 C0 8 0 8 -1.9375 8 C-5.07576903 6.47841502 -6.25398648 3.9308084 -8 1 C-5.23735711 0.40267181 -2.83967231 0 0 0 Z " fill="#15456A" transform="translate(91,27)"/>
     <path d="M0 0 C1.32 0.66 2.64 1.32 4 2 C2 4 2 4 -1.125 4.125 C-2.548125 4.063125 -2.548125 4.063125 -4 4 C-2.68 2.68 -1.36 1.36 0 0 Z " fill="#9AA2AB" transform="translate(86,24)"/>
   </g>
-  <text x="40" y="24" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="#0F3152">AutoLibrary Manuals</text>
+  <text x="40" y="24" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="#1a1a1a">AutoLibrary Manuals</text>
 </svg>
