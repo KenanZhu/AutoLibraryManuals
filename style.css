@@ -1,0 +1,8 @@
+/* Scale up logo rendering */
+img[alt*="logo" i],
+img[src*="logo"],
+img[src*="favicon"] {
+  max-height: 72px !important;
+  height: auto !important;
+  width: auto !important;
+}
