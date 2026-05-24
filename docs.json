@@ -3,9 +3,9 @@
   "theme": "mint",
   "name": "AutoLibrary Manuals",
   "colors": {
-    "primary": "#64ffda",
+    "primary": "#0d9488",
     "light": "#64ffda",
-    "dark": "#64ffda"
+    "dark": "#0d9488"
   },
   "favicon": "/favicon.svg",
   "fonts": {
@@ -24,7 +24,8 @@
                 "group": "开始",
                 "icon": "book-open",
                 "pages": [
-                  "zh/index"
+                  "zh/index/beforestart",
+                  "zh/index/intro"
                 ]
               },
               {
