@@ -24,8 +24,8 @@
                 "group": "开始",
                 "icon": "book-open",
                 "pages": [
-                  "zh/index/beforestart",
-                  "zh/index/intro"
+                  "zh/index/intro",
+                  "zh/index/beforestart"
                 ]
               },
               {
@@ -75,14 +75,8 @@
   "navbar": {
     "links": [
       {
-        "label": "下载",
-        "href": "https://autolibrary.kenanzhu.com/downloads",
-        "icon": "download"
-      },
-      {
-        "label": "更新日志",
-        "href": "https://autolibrary.kenanzhu.com/changelog",
-        "icon": "clock"
+        "label": "AutoLibrary 下载页面",
+        "href": "https://autolibrary.kenanzhu.com/downloads"
       },
       {
         "label": "GitHub",
