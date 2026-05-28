@@ -12,54 +12,59 @@
     "family": "Inter"
   },
   "navigation": {
-    "tabs": [
+    "languages": [
       {
-        "tab": "用户手册",
-        "languages": [
+        "language": "zh",
+        "default": true,
+        "tabs": [
           {
-            "language": "zh",
-            "default": true,
-            "groups": [
+            "tab": "用户手册",
+            "versions": [
               {
-                "group": "开始",
-                "icon": "book-open",
-                "pages": [
-                  "zh/index/intro",
-                  "zh/index/beforestart"
-                ]
-              },
-              {
-                "group": "安装",
-                "icon": "download",
-                "pages": [
-                  "zh/installation/install",
-                  "zh/installation/driver"
-                ]
-              },
-              {
-                "group": "配置",
-                "icon": "sliders",
-                "pages": [
-                  "zh/configuration/start",
-                  "zh/configuration/ui",
-                  "zh/configuration/file"
-                ]
-              },
-              {
-                "group": "功能",
-                "icon": "bolt",
-                "pages": [
-                  "zh/features/core",
-                  "zh/features/timer"
-                ]
-              },
-              {
-                "group": "FAQ",
-                "icon": "circle-question",
-                "pages": [
-                  "zh/faq/troubleshooting",
-                  "zh/faq/faq",
-                  "zh/faq/contact"
+                "version": "v1.3.0",
+                "groups": [
+                  {
+                    "group": "开始",
+                    "icon": "book-open",
+                    "pages": [
+                      "zh/manual/v1.3.0/index/intro",
+                      "zh/manual/v1.3.0/index/beforestart"
+                    ]
+                  },
+                  {
+                    "group": "安装",
+                    "icon": "download",
+                    "pages": [
+                      "zh/manual/v1.3.0/installation/install",
+                      "zh/manual/v1.3.0/installation/driver"
+                    ]
+                  },
+                  {
+                    "group": "配置",
+                    "icon": "sliders",
+                    "pages": [
+                      "zh/manual/v1.3.0/configuration/start",
+                      "zh/manual/v1.3.0/configuration/ui",
+                      "zh/manual/v1.3.0/configuration/file"
+                    ]
+                  },
+                  {
+                    "group": "功能",
+                    "icon": "bolt",
+                    "pages": [
+                      "zh/manual/v1.3.0/features/core",
+                      "zh/manual/v1.3.0/features/timer"
+                    ]
+                  },
+                  {
+                    "group": "FAQ",
+                    "icon": "circle-question",
+                    "pages": [
+                      "zh/manual/v1.3.0/faq/troubleshooting",
+                      "zh/manual/v1.3.0/faq/faq",
+                      "zh/manual/v1.3.0/faq/contact"
+                    ]
+                  }
                 ]
               }
             ]
@@ -73,11 +78,12 @@
     "dark": "/logo/dark.svg"
   },
   "navbar": {
+    "primary": {
+      "type": "button",
+      "label": "下载 AutoLibrary",
+      "href": "https://autolibrary.kenanzhu.com/downloads"
+    },
     "links": [
-      {
-        "label": "AutoLibrary 下载页面",
-        "href": "https://autolibrary.kenanzhu.com/downloads"
-      },
       {
         "label": "GitHub",
         "href": "https://github.com/KenanZhu/AutoLibrary",
