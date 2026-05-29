@@ -68,6 +68,12 @@
                 ]
               }
             ]
+          },
+          {
+            "tab": "更新日志",
+            "pages": [
+              "zh/changelog/overview"
+            ]
           }
         ]
       }
