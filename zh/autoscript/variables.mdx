@@ -1,0 +1,120 @@
+---
+title: "变量参考"
+description: "AutoScript 可操作的目标变量完整参考 - 数据类型与映射关系"
+---
+
+AutoScript 通过操作一组预定义的变量来调整预约参数。每个变量有固定的数据类型，赋值时必须保持类型一致。
+
+## 变量列表
+
+| 显示名称 | Lua 变量名 | 类型 | 说明 |
+| --- | --- | --- | --- |
+| 用户名 | `USERNAME` | String | 用户的学号 |
+| 用户启用 | `USER_ENABLE` | Boolean | 是否启用该用户 |
+| 预约日期 | `RESERVE_DATE` | Date | 座位预约日期 |
+| 预约开始时间 | `RESERVE_BEGIN_TIME` | Time | 预约开始时间 |
+| 预约结束时间 | `RESERVE_END_TIME` | Time | 预约结束时间 |
+
+<Note>
+  变量名区分大小写。`USERNAME`、`username` 和 `UserName` 是三个不同的标识符。
+  请始终使用全大写变量名。
+</Note>
+
+## 数据类型
+
+### String（字符串）
+
+文本类型，用于表示学号。
+
+```lua
+USERNAME = "20250101001"
+```
+
+限制：
+- 只能通过直接赋值修改
+- 不支持字符串拼接
+
+### Boolean（布尔）
+
+真/假值，用于控制用户是否被处理。
+
+```lua
+USER_ENABLE = true   -- 启用用户
+USER_ENABLE = false  -- 跳过用户
+
+-- 可直接作为条件判断
+if USER_ENABLE then
+    -- 用户启用时执行
+end
+```
+
+### Date（日期）
+
+日期值，在 Lua 内部以数值形式存储（Unix 时间戳），在配置文件中以 `"YYYY-MM-DD"` 字符串形式存储。
+
+```lua
+-- 使用工具函数创建日期
+RESERVE_DATE = date(2025, 10, 30)           -- 绝对日期
+RESERVE_DATE = datenow()                     -- 今天
+RESERVE_DATE = dateadd(datenow(), 1)         -- 明天
+RESERVE_DATE = strtodate("2025-12-31")       -- 从字符串解析
+```
+
+<Warning>
+  不要直接对日期变量使用算术运算（如 `RESERVE_DATE + 86400`）。
+  请使用 `dateadd()` 函数。
+</Warning>
+
+### Time（时间）
+
+时间值，在 Lua 内部以分钟数形式存储（0-1439），在配置文件中以 `"HH:MM"` 字符串形式存储。
+
+```lua
+-- 使用工具函数创建时间
+RESERVE_BEGIN_TIME = time(9, 0)               -- 09:00
+RESERVE_END_TIME = time(21, 30)               -- 21:30
+RESERVE_BEGIN_TIME = timeadd(timenow(), 60)   -- 当前时间 + 1 小时
+RESERVE_END_TIME = strtotime("22:00")         -- 从字符串解析
+```
+
+<Info>
+  时间值在内部是以分钟为单位的整数值。`time(9, 30)` 等价于 `570`（9*60 + 30）。
+  虽然可以直接使用数值，但建议始终使用工具函数以确保可读性和正确性。
+</Info>
+
+## 虚拟变量
+
+以下两个变量存在于可视化编排器中，但在实际 Lua 脚本中不可用。编排器会在生成代码时将它们转换为对应的函数调用：
+
+| 虚拟变量 | 编排器中的含义 | 生成的 Lua 代码 |
+| --- | --- | --- |
+| `CURRENT_DATE` | 当前日期 | `datenow()` |
+| `CURRENT_TIME` | 当前时间 | `timenow()` |
+
+<Note>
+  在代码编辑器中编写脚本时，请直接使用 `datenow()` 和 `timenow()` 函数，
+  不要使用 `CURRENT_DATE` 或 `CURRENT_TIME`。
+</Note>
+
+## 类型安全
+
+AutoScript 引擎会在脚本执行前后验证变量类型。以下情况会导致错误：
+
+- 将字符串赋给日期变量
+- 将布尔值赋给整数变量
+- 将浮点数赋给需要整数的变量
+- 变量值变为 `nil`
+
+```lua
+-- 正确：类型匹配
+RESERVE_DATE = dateadd(datenow(), 1)          -- Date = Date
+USER_ENABLE = true                             -- Boolean = Boolean
+
+-- 错误：类型不匹配
+RESERVE_DATE = "2025-10-30"                   -- Error: Date ≠ String
+USER_ENABLE = 1                                -- Error: Boolean ≠ Int
+```
+
+<Tip>
+  如果脚本执行后某个变量值未改变，脚本中对该变量的赋值被跳过了，请检查赋值表达式的结果类型是否与变量声明的类型匹配。
+</Tip>

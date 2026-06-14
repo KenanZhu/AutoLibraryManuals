@@ -1,0 +1,235 @@
+---
+title: "函数参考"
+description: "AutoScript 内置工具函数完整参考 - 日期与时间处理"
+---
+
+AutoScript 提供了一组内置的日期和时间工具函数，用于在脚本中处理动态时间计算。
+
+## 日期函数
+
+### `date(y, m, d)`
+
+创建一个指定日历日期的值。
+
+**参数：**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `y` | integer | 年份，如 `2025` |
+| `m` | integer | 月份，如 `10` |
+| `d` | integer | 日期，如 `30` |
+
+**返回值：** 日期值（可赋值给日期类型变量）
+
+**示例：**
+
+```lua
+-- 设置为 2025 年 10 月 30 日
+RESERVE_DATE = date(2025, 10, 30)
+```
+
+---
+
+### `datenow()`
+
+获取当前日期（当天的 00:00:00）。
+
+**返回值：** 当前日期值
+
+**示例：**
+
+```lua
+-- 将预约日期设为今天
+RESERVE_DATE = datenow()
+```
+
+---
+
+### `dateadd(date_val, n)`
+
+在指定日期上增加或减少天数。
+
+**参数：**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `date_val` | date | 基准日期值 |
+| `n` | integer | 增加的天数（负数表示减少） |
+
+**返回值：** 计算后的日期值
+
+**示例：**
+
+```lua
+-- 预约明天
+RESERVE_DATE = dateadd(datenow(), 1)
+
+-- 预约三天前
+RESERVE_DATE = dateadd(datenow(), -3)
+
+-- 在已有日期基础上计算
+RESERVE_DATE = dateadd(RESERVE_DATE, 7)  -- 延后一周
+```
+
+---
+
+### `strtodate(iso_str)`
+
+将 ISO 格式日期字符串转换为日期值。
+
+**参数：**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `iso_str` | string | 日期字符串，格式 `"YYYY-MM-DD"` |
+
+**返回值：** 日期值
+
+**示例：**
+
+```lua
+RESERVE_DATE = strtodate("2025-12-31")
+```
+
+---
+
+### `datetostr(ts)`
+
+将日期值转换为 ISO 格式字符串。
+
+**参数：**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `ts` | date | 日期值 |
+
+**返回值：** 格式为 `"YYYY-MM-DD"` 的字符串
+
+<Note>
+  `datetostr()` 通常用于调试或日志输出。在实际操作中直接使用日期值即可。
+</Note>
+
+---
+
+## 时间函数
+
+### `time(h, m)`
+
+创建一个指定时间值。
+
+**参数：**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `h` | integer | 小时（0-23） |
+| `m` | integer | 分钟（0-59） |
+
+**返回值：** 时间值（可赋值给时间类型变量）
+
+**示例：**
+
+```lua
+-- 设置开始时间为 09:30
+RESERVE_BEGIN_TIME = time(9, 30)
+
+-- 设置结束时间为 21:00
+RESERVE_END_TIME = time(21, 0)
+```
+
+---
+
+### `timenow()`
+
+获取当前时间（以分钟表示的当天已过时间）。
+
+**返回值：** 当前时间值（分钟数）
+
+**示例：**
+
+```lua
+-- 将开始时间设为当前时间后 30 分钟
+RESERVE_BEGIN_TIME = timeadd(timenow(), 30)
+```
+
+---
+
+### `timeadd(time_val, n)`
+
+在指定时间上增加或减少分钟数。
+
+**参数：**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `time_val` | time | 基准时间值 |
+| `n` | integer | 增加的分钟数（负数表示减少） |
+
+**返回值：** 计算后的时间值（自动处理跨天回绕）
+
+**示例：**
+
+```lua
+-- 开始时间推迟 30 分钟
+RESERVE_BEGIN_TIME = timeadd(RESERVE_BEGIN_TIME, 30)
+
+-- 结束时间提前 1 小时
+RESERVE_END_TIME = timeadd(RESERVE_END_TIME, -60)
+
+-- 在现有时间基础上叠加
+RESERVE_BEGIN_TIME = timeadd(timenow(), 120)  -- 当前时间 + 2 小时
+```
+
+---
+
+### `strtotime(hm_str)`
+
+将时间字符串转换为时间值。
+
+**参数：**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `hm_str` | string | 时间字符串，格式 `"HH:MM"` |
+
+**返回值：** 时间值
+
+**示例：**
+
+```lua
+RESERVE_BEGIN_TIME = strtotime("08:00")
+```
+
+---
+
+### `timetostr(m)`
+
+将时间值转换为字符串。
+
+**参数：**
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `m` | time | 时间值（分钟数） |
+
+**返回值：** 格式为 `"HH:MM"` 的字符串
+
+<Note>
+  `timetostr()` 通常用于调试或日志输出。在实际操作中直接使用时间值即可。
+</Note>
+
+---
+
+## 函数速查表
+
+| 函数 | 说明 | 输入 | 输出 |
+| --- | --- | --- | --- |
+| `date(y, m, d)` | 创建日期 | `(int, int, int)` | date |
+| `datenow()` | 当前日期 | 无 | date |
+| `dateadd(d, n)` | 日期偏移 | `(date, int)` | date |
+| `strtodate(s)` | 字符串转日期 | `(string)` | date |
+| `datetostr(d)` | 日期转字符串 | `(date)` | string |
+| `time(h, m)` | 创建时间 | `(int, int)` | time |
+| `timenow()` | 当前时间 | 无 | time |
+| `timeadd(t, n)` | 时间偏移 | `(time, int)` | time |
+| `strtotime(s)` | 字符串转时间 | `(string)` | time |
+| `timetostr(t)` | 时间转字符串 | `(time)` | string |

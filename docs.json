@@ -21,6 +21,61 @@
             "tab": "用户手册",
             "versions": [
               {
+                "version": "v1.4.0",
+                "groups": [
+                  {
+                    "group": "开始",
+                    "icon": "book-open",
+                    "pages": [
+                      "zh/manual/v1.4.0/index/intro",
+                      "zh/manual/v1.4.0/index/beforestart"
+                    ]
+                  },
+                  {
+                    "group": "安装",
+                    "icon": "download",
+                    "pages": [
+                      "zh/manual/v1.4.0/installation/install",
+                      "zh/manual/v1.4.0/installation/driver"
+                    ]
+                  },
+                  {
+                    "group": "配置",
+                    "icon": "sliders",
+                    "pages": [
+                      "zh/manual/v1.4.0/configuration/start",
+                      "zh/manual/v1.4.0/configuration/ui",
+                      "zh/manual/v1.4.0/configuration/file"
+                    ]
+                  },
+                  {
+                    "group": "设置",
+                    "icon": "tools",
+                    "pages": [
+                      "zh/manual/v1.4.0/global-settings/start",
+                      "zh/manual/v1.4.0/global-settings/appearance"
+                    ]
+                  },
+                  {
+                    "group": "功能",
+                    "icon": "bolt",
+                    "pages": [
+                      "zh/manual/v1.4.0/features/core",
+                      "zh/manual/v1.4.0/features/timer"
+                    ]
+                  },
+                  {
+                    "group": "FAQ",
+                    "icon": "circle-question",
+                    "pages": [
+                      "zh/manual/v1.4.0/faq/troubleshooting",
+                      "zh/manual/v1.4.0/faq/faq",
+                      "zh/manual/v1.4.0/faq/contact"
+                    ]
+                  }
+                ]
+              },
+              {
                 "version": "v1.3.0",
                 "groups": [
                   {
@@ -70,9 +125,39 @@
             ]
           },
           {
-            "tab": "更新日志",
-            "pages": [
-              "zh/changelog/overview"
+            "tab": "AutoScript",
+            "groups": [
+              {
+                "group": "概述",
+                "icon": "book-open",
+                "pages": [
+                  "zh/autoscript/index"
+                ]
+              },
+              {
+                "group": "语法指引",
+                "icon": "code",
+                "pages": [
+                  "zh/autoscript/syntax",
+                  "zh/autoscript/functions",
+                  "zh/autoscript/variables"
+                ]
+              },
+              {
+                "group": "工具使用",
+                "icon": "pencil",
+                "pages": [
+                  "zh/autoscript/editor",
+                  "zh/autoscript/orchestrator"
+                ]
+              },
+              {
+                "group": "集成",
+                "icon": "link",
+                "pages": [
+                  "zh/autoscript/integration"
+                ]
+              }
             ]
           }
         ]

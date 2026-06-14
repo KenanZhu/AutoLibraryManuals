@@ -1,0 +1,149 @@
+---
+title: "疑难解答"
+description: "AutoLibrary 故障排除与常见问题解决方法"
+---
+
+## 工具启动时报错"无法找到驱动"
+
+<Note>
+  这大概率是因为浏览器驱动未正确安装或版本不匹配。
+
+  因此我们强烈建议使用 AutoLibrary 的[浏览器驱动自动下载功能](/zh/manual/v1.4.0/installation/driver#%E6%96%B9%E5%BC%8F%E4%B8%80%EF%BC%9A%E4%BD%BF%E7%94%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E9%A9%B1%E5%8A%A8%E8%87%AA%E5%8A%A8%E4%B8%8B%E8%BD%BD%E5%8A%9F%E8%83%BD%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89)。
+  这可以很大程度上减少此类问题的发生。
+</Note>
+
+<Steps>
+  <Step title="检查驱动位置">
+    确认驱动文件是否放置在正确位置。
+  </Step>
+  <Step title="确认版本匹配">
+    驱动版本必须与浏览器版本完全匹配（如 Chrome 需对应版本的 `chromedriver.exe`，切勿混用）。
+  </Step>
+  <Step title="重新安装驱动">
+    使用浏览器驱动自动下载窗口重新安装。
+  </Step>
+</Steps>
+
+## 登录失败，提示账号密码错误
+
+请检查配置界面中的账号密码是否正确。
+
+<Steps>
+  <Step title="确认账号密码">
+    确认学号和密码无误。
+  </Step>
+  <Step title="检查特殊字符">
+    检查是否有不支持的特殊字符需要转义。
+  </Step>
+  <Step title="手动验证">
+    尝试手动登录图书馆系统确认账号可用。
+  </Step>
+</Steps>
+
+## 预约失败，提示座位不可用
+
+目标座位可能已被他人预约或不在可预约时间。
+
+<Steps>
+  <Step title="确认座位信息">
+    确认座位编号、楼层、区域是否正确。
+  </Step>
+  <Step title="调整预约策略">
+    尝试预约其它座位或调整时间参数。增大 [**最大时长偏差**] 让工具在允许的时间范围内自动选择最佳起始时间。
+  </Step>
+</Steps>
+
+## 定时任务显示"已就绪"或"执行中"且无法删除
+
+<Warning>
+  此解决方法需要直接操作 AutoLibrary 的核心配置文件，需要操作者对 [JSON 格式](https://www.json.org/json-zh.html)有一定了解。**操作前请务必备份相关文件**，以免误操作导致配置丢失。
+</Warning>
+
+这一般是因为定时任务已进入预约队列，但软件上次异常关闭未能处理完毕。请按以下步骤手动删除：
+
+<Steps>
+  <Step title="记录异常任务信息">
+    检查界面中正在运行的定时任务，记住任务名称或运行时间等可用于定位的信息。
+  </Step>
+  <Step title="找到配置文件目录">
+    在 AutoLibrary 配置界面的 [**其它**] 选项卡中，找到 [**当前运行配置路径**] 显示的文件夹路径，使用文件管理器打开该目录。
+  </Step>
+  <Step title="打开定时任务配置文件">
+    在该目录中找到名为 `timer_task.json` 的文件，使用文本编辑器打开（推荐 [VS Code](https://code.visualstudio.com/)、[Notepad++](https://notepad-plus-plus.org/)，也可直接使用记事本）。
+  </Step>
+  <Step title="定位异常任务">
+    在 JSON 文件中查找包含以下信息的任务配置块：
+    - `name`（任务名称）
+    - `execute_time`（执行时间）
+
+    如果任务名包含中文，在 JSON 中会以 Unicode 编码显示，
+    如 `"name": "预约任务"` 在 Unicode 显示下会变为： `"name": "预约任务"`。
+    可使用在线工具搜索「Unicode 转中文」进行转换确认。
+  </Step>
+  <Step title="删除异常任务">
+    将找到的任务配置块从 JSON 文件中完全删除。
+
+    <Warning>
+      删除时请保持 JSON 格式完整：确保花括号 `{}`、方括号 `[]`、逗号等符号正确。不要删除其它正常任务配置。
+    </Warning>
+  </Step>
+  <Step title="重启软件">
+    完全关闭 AutoLibrary 后重新打开，异常定时任务应已成功删除，界面状态恢复正常。
+  </Step>
+</Steps>
+
+<Tip>
+  如果操作后 JSON 格式出错，软件可能会覆写原有配置文件。请确保备份，并检查 JSON 语法是否正确（注意最后一个元素后不要有多余的逗号）。
+</Tip>
+
+## macOS 系统首次启动被阻止
+
+macOS 用户首次启动 AutoLibrary 时，系统可能提示"无法验证开发者"并阻止打开应用。
+
+这是由于应用未经过 Apple 官方代码签名所致。请按以下步骤操作：
+
+<Steps>
+  <Step title="取消弹窗">
+    首次双击 `AutoLibrary.app` 后，系统弹出"无法验证开发者"提示，点击 [**取消**] 关闭弹窗。
+  </Step>
+  <Step title="进入隐私设置">
+    打开系统 [**设置**] → [**隐私与安全性**]。
+  </Step>
+  <Step title="允许运行">
+    在页面底部找到关于 AutoLibrary 的拦截提示，点击右侧的 [**仍要打开**] 按钮，并在弹出的对话框中再次确认 [**打开**]。
+  </Step>
+</Steps>
+
+<Note>
+  右键点击 → [**打开**] 的方式在某些 macOS 版本中可能不会出现允许选项。如果该方法无效，请使用上述系统设置方法。
+</Note>
+
+## macOS 系统浏览器驱动无法运行
+
+在 macOS 上下载的浏览器驱动可能被系统隔离，导致无法执行。
+
+<Steps>
+  <Step title="移除隔离属性">
+    打开终端，运行以下命令移除驱动的隔离属性：
+
+    ```bash
+    xattr -d com.apple.quarantine /path/to/driver
+    ```
+
+    将 `/path/to/driver` 替换为实际的驱动文件路径。
+  </Step>
+  <Step title="添加执行权限">
+    如果系统提示无执行权限，运行以下命令：
+
+    ```bash
+    chmod +x /path/to/driver
+    ```
+  </Step>
+  <Step title="验证驱动可执行">
+    在终端中运行驱动文件确认其可正常启动。例如：
+
+    ```bash
+    /path/to/chromedriver --version
+    ```
+  </Step>
+</Steps>

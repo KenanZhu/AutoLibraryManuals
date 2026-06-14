@@ -1,0 +1,80 @@
+---
+title: "安装浏览器驱动"
+description: "AutoLibrary 浏览器驱动配置指南 - 自动下载与手动安装"
+---
+
+工具需要通过浏览器驱动来控制浏览器。以下两种方式可以帮助您快速配置驱动：
+
+<Accordion title="什么是浏览器驱动？">
+  浏览器驱动是一种处于自动化工具与浏览器之间的中间程序，它接收自动化工具的指令并转发给浏览器执行，
+  从而实现对浏览器的自动控制。AutoLibrary 通过浏览器驱动来完成登录、预约、签到等需要操作网页的操作。
+
+  每个浏览器都有各自对应的驱动：
+
+  | 浏览器 | 对应 | 驱动 |
+  | --- | --- | --- |
+  | Microsoft Edge | → | Edge WebDriver |
+  | Google Chrome | → | Chrome Driver |
+  | Mozilla Firefox | → | Gecko Driver |
+  | ... | → | ... |
+
+  <Note>
+    不同类型浏览器的驱动只能适用于其对应的浏览器，且驱动版本必须与浏览器版本匹配，否则无法正常工作。
+    AutoLibrary 的自动下载功能可以帮助解决版本匹配问题。
+  </Note>
+</Accordion>
+
+<Tip>
+  AutoLibrary 支持自动检测本地安装的浏览器，并查找适配的驱动版本，大大简化了配置流程。
+</Tip>
+
+## 方式一：使用浏览器驱动自动下载功能
+
+<Steps>
+  <Step title="打开驱动下载窗口">
+    在 [AutoLibrary 配置界面](/zh/manual/v1.4.0/configuration/ui#%E8%BF%90%E8%A1%8C%E9%85%8D%E7%BD%AE)中，点击 [**浏览器驱动自动下载**] 按钮。
+
+    ![浏览器驱动自动下载窗口](/images/v1.2.1/driver-auto-download-window.png)
+  </Step>
+  <Step title="选择驱动版本">
+    工具会自动检测您电脑上已安装的浏览器，并列出可用的驱动版本。
+  </Step>
+  <Step title="开始下载">
+    从窗口中的下拉列表中选择需要的浏览器驱动版本，点击 [**下载驱动**] 按钮。
+
+    ![开始下载浏览器驱动](/images/v1.2.1/driver-auto-download-window-start.png)
+  </Step>
+  <Step title="完成配置">
+    下载完成后，点击 [**确认**] 将驱动类型与驱动路径保存到配置窗口中并退出下载对话框。
+
+    ![浏览器驱动下载完成](/images/v1.2.1/driver-auto-download-window-done.png)
+  </Step>
+</Steps>
+
+## 方式二：手动下载浏览器驱动
+
+如果仍需手动下载驱动，请根据您使用的浏览器和操作系统选择对应的驱动：
+
+| 浏览器 | 适用系统 | 下载链接 |
+| --- | --- | --- |
+| Microsoft Edge | 跨平台 | [下载 Edge 驱动](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/) |
+| Google Chrome | 跨平台 | [下载 Chrome 驱动](https://developer.chrome.google.cn/docs/chromedriver/downloads) |
+| Mozilla Firefox | 跨平台 | [下载 Firefox 驱动](https://github.com/mozilla/geckodriver/releases) |
+
+<Note>
+  macOS 用户请根据 Mac 芯片类型选择对应架构的驱动：
+  - Apple Silicon (M1/M2/M3/M4) → 选择 `arm64` 或 `mac64_m1` 版本
+  - Intel → 选择 `x64` 或 `mac64` 版本
+
+  下载后，驱动文件通常以可执行文件形式提供。
+
+  如果系统提示无法验证开发者，请在终端中运行：
+  ```bash
+  xattr -d com.apple.quarantine /path/to/driver
+  ```
+
+  如果系统提示无执行权限，请添加执行权限：
+  ```bash
+  chmod +x /path/to/driver
+  ```
+</Note>

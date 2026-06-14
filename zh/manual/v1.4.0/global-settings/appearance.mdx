@@ -1,0 +1,132 @@
+---
+title: "外观"
+description: "AutoLibrary 外观设置 - 主题模式、界面风格与自定义主题"
+---
+
+在全局设置窗口中，选择左侧导航栏的 [**外观**] 进入外观设置页面。
+
+## 主题模式
+
+| 选项 | 说明 |
+| --- | --- |
+| [**浅色**] | 使用浅色主题 |
+| [**深色**] | 使用深色主题 |
+| [**跟随系统**] | 根据操作系统设置自动切换浅色/深色模式（默认） |
+
+## 界面风格
+
+通过下拉列表选择 Qt 界面风格（如 `Fusion`、`Windows`、`macOS` 等）。可选值取决于系统中安装的 Qt 风格插件。
+
+<Note>
+  更改界面风格后需要重启应用才能生效。
+</Note>
+
+## 自定义外观
+
+你可以导入 `.altheme` 主题文件来替换默认外观：
+
+<Warning>
+  导入主题前建议确认来源可信。尽管 AutoLibrary 会对主题文件进行基本的格式校验，
+  但恶意构造的主题文件可能存在安全风险。
+
+  因此我们建议尽量从 [AutoLibrary 主题市场](https://autolibrary.kenanzhu.com/marketplace)
+  获取相对可靠的主题文件。
+</Warning>
+
+<Steps>
+  <Step title="获取主题文件">
+    从 [AutoLibrary 主题市场](https://autolibrary.kenanzhu.com/marketplace) 浏览并下载你喜欢的主题文件（`.altheme`）。
+
+    <Info>
+      AutoLibrary 所发布的软件包中不含预装主题，所有主题文件需要从主题市场获取。
+    </Info>
+  </Step>
+  <Step title="导入主题">
+    在 [**自定义外观**] 区域点击 [**浏览**] 按钮，选择下载的 `.altheme` 文件。
+
+    AutoLibrary 同时支持 `.altheme` 和 `.qss` 格式的主题文件。导入 `.qss` 文件时，
+    AutoLibrary 会自动包装为 `.altheme` 格式。
+
+    <Note>
+      所有导入的主题文件都会**按照主题名称重新命名**并存放在 AutoLibrary 配置目录的 themes 文件夹下：
+
+      Windows 系统：
+      ```path
+      C:\Users\<用户名>\AppData\Roaming\AutoLibrary\config\themes
+      ```
+      macOS 系统：
+      ```path
+      ~/Library/Application Support/AutoLibrary/config/themes
+      ```
+    </Note>
+    <Note>
+      导入时若与已有主题同名，AutoLibrary 会对比作者信息。同一作者的同名主题将被视为重复导入并被拒绝。
+
+      因此，发布主题时请确保你的每个作品使用唯一名称。
+    </Note>
+  </Step>
+  <Step title="选择并应用">
+    导入后，从下拉列表中选择该主题即可预览。点击 [**应用**] 保存设置，或点击 [**确认**] 保存并关闭窗口。
+  </Step>
+</Steps>
+
+## 主题文件格式
+
+<Note>
+  **如果需要上传并分享你的自定义主题文件，你应该了解以下内容。**
+</Note>
+
+AutoLibrary 主题（**a**uto **l**ibrary **theme**）`.altheme` 文件格式基于 ZIP 压缩格式，
+其内部包含以下文件：
+
+| 文件 | 说明 |
+| --- | --- |
+| `theme.qss` | Qt 样式表文件，定义界面外观 |
+| `info.json` | 主题元数据，包含名称、作者、适配模式等信息 |
+
+<Note>
+  如果需要了解 Qt 样式表文件（Qt Style Sheet, QSS），请访问
+  [Qt QSS 官方参考文档](https://doc.qt.io/qt-6/stylesheet-reference.html)
+</Note>
+
+`info.json` 结构示例：
+
+```json
+{
+  "qss": "theme.qss",
+  "name": "My Theme",
+  "author": "Your Name",
+  "need_theme": "dark",
+  "brief": "简洁的深色主题"
+}
+```
+
+| 字段 | 说明 |
+| --- | --- |
+| `qss` | 样式表文件名，指向压缩包内的 QSS 文件 |
+| `name` | 主题名称 |
+| `author` | 主题作者 |
+| `need_theme` | 适配主题：`"dark": 深色` `"light": 浅色` `"both": 兼容两者` |
+| `brief` | 关于主题样式的简短描述，建议不要超过 50 个字符 |
+
+## 主题市场
+
+[AutoLibrary 主题市场](https://autolibrary.kenanzhu.com/marketplace)是一个在线平台，
+供用户浏览、下载和分享自定义主题。
+
+### 通过市场上传与分享
+
+如果你按照上述格式规范制作了自定义主题，可以通过主题市场上传分享：
+
+1. 注册 [AutoLibrary 主题市场](https://autolibrary.kenanzhu.com/marketplace)账户。注册时，
+   昵称建议设置为主题中的作者名，以免引起命名冲突
+2. 准备 `.altheme` 主题文件
+3. 在上传页面，拖入或选择你准备好的 `.altheme` 主题文件
+4. 填写必要的主题信息（名称、简介描述、适配主题、兼容版本等）
+5. 提交审核，等待审核通过后即可在主题市场中搜索、浏览并下载你分享的主题文件
+
+<Info>
+  上传的主题需要经过管理员审核后才能公开发布。审核通过后，其它用户即可在市场中浏览和下载。
+
+  如果提交被管理员退回，请仔细阅读审核退回原因，按要求通过编辑保存修改后即可重新提交审核。
+</Info>

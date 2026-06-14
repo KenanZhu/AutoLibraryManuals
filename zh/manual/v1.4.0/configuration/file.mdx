@@ -1,0 +1,215 @@
+---
+title: "通过文件配置"
+description: "AutoLibrary JSON 配置文件参考 - run.json 与 user.json"
+---
+
+软件启动时，将自动在用户主目录下创建运行配置文件 `run.json` 和用户配置文件 `user.json`。
+
+配置文件统一存放于用户数据目录下的 `AutoLibrary/config` 文件夹中。
+
+以 Windows 系统为例：
+
+```path
+C:\Users\<用户名>\AppData\Roaming\AutoLibrary\config
+```
+
+macOS 系统中的路径则为：
+
+```path
+~/Library/Application Support/AutoLibrary/config
+```
+
+<Warning>
+  任何情况下都不建议在该目录下修改除运行配置文件、用户配置文件和全局配置文件以外的任何文件。
+
+  即使是修改配置文件，也请务必保持 [JSON 格式](https://www.json.org/json-zh.html)正确，否则可能导致软件无法正常启动或运行。
+</Warning>
+
+## 运行配置文件 (run.json)
+
+```json
+{
+  "library": {
+    "host_url": "http://10.1.20.7",
+    "login_url": "/login"
+  },
+  "mode": {
+    "run_mode": 1
+  },
+  "login": {
+    "auto_captcha": true,
+    "max_attempt": 3
+  },
+  "web_driver": {
+    "driver_type": "edge",
+    "driver_path": "",
+    "headless": false
+  }
+}
+```
+
+### 字段 (library)
+
+关于图书馆的相关配置，目前版本下无需更改
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `host_url` | String | 图书馆主机URL，无需更改 |
+| `login_url` | String | 登录页面URL，无需更改 |
+
+### 字段 (mode)
+
+AutoLibrary 的运行模式
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `run_mode` | Number | 运行模式组合（+1 预约, +2 签到, +4 续约） |
+
+### 字段 (login)
+
+AutoLibrary 处理登录时的相关配置
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `auto_captcha` | Boolean | 自动验证码识别，建议保持 `true` |
+| `max_attempt` | Number | 登录尝试次数，默认 3 次 |
+
+### 字段 (web_driver)
+
+AutoLibrary 使用的浏览器及其驱动的相关配置
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `driver_type` | String | 浏览器类型：`edge` / `chrome` / `firefox` |
+| `driver_path` | String | 驱动文件路径，为空则运行失败 |
+| `headless` | Boolean | 无头模式，默认 `false` |
+
+## 用户配置文件 (user.json)
+
+```json
+{
+  "groups": [
+    {
+      "name": "分组名",
+      "enable": true,
+      "users": [
+        {
+          "username": "您的学号",
+          "password": "您的密码",
+          "enable": true,
+          "reserve_info": {
+            "date": "2025-10-30",
+            "place": "1",
+            "floor": "4",
+            "room": "5",
+            "begin_time": {
+              "time": "09:30",
+              "max_diff": 30,
+              "prefer_early": true
+            },
+            "end_time": {
+              "time": "21:23",
+              "max_diff": 30,
+              "prefer_early": false
+            },
+            "renew_time": {
+              "expect_duration": 1.0,
+              "max_diff": 30,
+              "prefer_early": false
+            },
+            "seat_id": "31A",
+            "expect_duration": 6,
+            "satisfy_duration": true
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+### 字段 (groups)
+
+这是用户配置的最外层的用户分组，分组中会包含一个用户列表，
+
+<Note>
+  即使只添加用户列表而不使用分组包裹，AutoLibrary 也会默认为该用户列表创建兼容分组。
+</Note>
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `name` | String | 分组名称 |
+| `enable` | Boolean | 是否启用该分组，`false` 时跳过 |
+
+### 字段 (users)
+
+用户分组中的用户列表
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `username` | String | 学号 |
+| `password` | String | 密码 |
+| `enable` | Boolean | 是否启用该用户，`false` 时跳过 |
+
+### 字段 (reserve_info)
+
+该字段包含了用户的座位预约信息
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `date` | String | 预约日期（格式 `yyyy-MM-dd`） |
+| `place` | String | `"图书馆"` 或 `"1"` |
+| `floor` | String | 楼层代码，**详见下方楼层映射** |
+| `room` | String | 区域代码，**详见下方区域映射** |
+| `seat_id` | String | 座位编号，如 `12A` `012a` |
+| `expect_duration` | Number | 期望预约时长（分钟） |
+| `satisfy_duration` | Boolean | 是否满足期望时长 |
+
+<Accordion title="楼层映射">
+  | 代码 | 楼层 |
+  | --- | --- |
+  | `2` | 二层 |
+  | `3` | 三层 |
+  | `4` | 四层 |
+  | `5` | 五层 |
+</Accordion>
+<Accordion title="区域映射">
+  | 代码 | 区域 |
+  | --- | --- |
+  | `1` | 二层内环 |
+  | `2` | 二层西区 |
+  | `3` | 三层内环 |
+  | `4` | 三层外环 |
+  | `5` | 四层内环 |
+  | `6` | 四层外环 |
+  | `7` | 期刊区 |
+  | `8` | 五层考研 |
+</Accordion>
+
+#### 子字段 begin_time
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `time` | String | 开始时间（格式 `HH:mm`） |
+| `max_diff` | Number | 最大时间差（分钟） |
+| `prefer_early` | Boolean | 是否优先较早时间 |
+
+#### 子字段 end_time
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `time` | String | 结束时间（格式 `HH:mm`） |
+| `max_diff` | Number | 最大时间差（分钟） |
+| `prefer_early` | Boolean | 结束时间优先较晚 |
+
+#### 子字段 renew_time
+
+<Info>
+  各用户配置的该子字段只在自动续约模式下才会被 AutoLibrary 读取
+</Info>
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `expect_duration` | Number | 期望续约时长（小时） |
+| `max_diff` | Number | 最大时间差（分钟） |
+| `prefer_early` | Boolean | 续约时间优先较晚 |

@@ -1,0 +1,83 @@
+---
+title: "AutoScript 概述"
+description: "AutoScript 自动化脚本引擎 - 在定时任务执行前动态调整预约参数"
+---
+
+AutoScript 是基于 Lua 语言的自动化脚本引擎，用于在定时任务执行前对预约参数进行动态调整。
+
+## 什么是 AutoScript
+
+在之前的版本中，定时任务只能按照固定的预约参数执行。如果需要在不同日期预约不同座位，或根据时间动态调整预约时长，只能手动修改配置。
+
+AutoScript 解决了这一问题。它允许你编写简单的脚本，在定时任务执行前自动修改用户变量（如预约日期、开始时间、结束时间等），实现灵活的自动化预约策略。
+
+## 核心概念
+
+AutoScript 的核心工作流程如下：
+
+1. **输入数据**：定时任务触发时，从用户配置中读取当前用户的预约参数
+2. **执行脚本**：运行你编写的 AutoScript 脚本，动态修改变量值
+3. **输出数据**：将脚本修改后的参数传递给自动化引擎执行
+
+<Note>
+  AutoScript 脚本修改的参数仅影响当次执行，不会回写到用户配置文件。下次任务运行时将重新从配置文件读取原始值。
+</Note>
+
+## 典型应用场景
+
+- **每日动态日期**：始终预约"明天"的座位，无需每天手动修改日期
+- **条件切换**：根据是否启用标志决定不同的预约策略
+- **时间偏移**：在特定时间段自动调整预约开始时间
+- **批量处理**：配合用户分组，为不同用户设置不同的预约参数
+
+## 快速示例
+
+以下脚本将预约日期设为明天，开始时间设为上午 9:00：
+
+```lua
+-- 设置预约日期为明天
+RESERVE_DATE = dateadd(datenow(), 1)
+
+-- 设置开始时间为 09:00
+RESERVE_BEGIN_TIME = time(9, 0)
+```
+
+## 两种使用方式
+
+AutoLibrary 提供两种方式编写 AutoScript：
+
+| 方式 | 说明 | 适合人群 |
+| --- | --- | --- |
+| [**代码编辑器**](/zh/autoscript/editor) | 直接编写 Lua 脚本，提供语法高亮和调试功能 | 熟悉脚本编写的用户 |
+| [**可视化编排器**](/zh/autoscript/orchestrator) | 通过图形界面拖拽组合条件和操作，自动生成脚本 | 不熟悉编程的用户 |
+
+<CardGroup cols={2}>
+  <Card
+    title="语法指引"
+    icon="code"
+    href="/zh/autoscript/syntax"
+  >
+    了解 AutoScript 的 Lua 语法基础、运算符和流程控制。
+  </Card>
+  <Card
+    title="函数参考"
+    icon="function-square"
+    href="/zh/autoscript/functions"
+  >
+    查看所有可用的日期、时间工具函数及其用法。
+  </Card>
+  <Card
+    title="变量参考"
+    icon="database"
+    href="/zh/autoscript/variables"
+  >
+    了解可操作的目标变量、数据类型与约束规则。
+  </Card>
+  <Card
+    title="集成指南"
+    icon="link"
+    href="/zh/autoscript/integration"
+  >
+    了解如何将 AutoScript 集成到定时任务中。
+  </Card>
+</CardGroup>

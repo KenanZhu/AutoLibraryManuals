@@ -1,0 +1,149 @@
+---
+title: "语法指引"
+description: "AutoScript Lua 语法指南 - 变量、运算符、条件判断与注释"
+---
+
+AutoScript 使用 Lua 5.4 作为脚本语言。本页介绍编写 AutoScript 所需的 Lua 基础语法。
+
+## 注释
+
+使用 `--` 开头编写单行注释：
+
+```lua
+-- 这是一条注释
+RESERVE_DATE = dateadd(datenow(), 1)  -- 这也是一条行内注释
+```
+
+<Info>
+  AutoScript 仅支持单行注释（`--`），不支持 Lua 的多行注释（`--[[ ]]`）。
+</Info>
+
+## 变量赋值
+
+使用 `=` 进行变量赋值。可操作的目标变量请参见[变量参考](/zh/autoscript/variables)。
+
+```lua
+USERNAME = "alice"
+USER_ENABLE = true
+RESERVE_DATE = date(2025, 10, 30)
+RESERVE_BEGIN_TIME = time(9, 0)
+RESERVE_END_TIME = time(21, 30)
+```
+
+<Warning>
+  赋值必须保持变量原有的类型。例如，不能将字符串赋值给日期类型的变量，也不能将布尔值赋值给整数类型。类型错误会在脚本执行时报错。
+</Warning>
+
+## 算术运算
+
+支持基本的算术运算，可用于数值和日期/时间变量的计算：
+
+```lua
+-- 数值运算
+RESERVE_BEGIN_TIME = RESERVE_BEGIN_TIME + 60      -- 开始时间推迟 60 分钟
+RESERVE_END_TIME = RESERVE_END_TIME - 30          -- 结束时间提前 30 分钟
+
+-- 日期运算（使用工具函数）
+RESERVE_DATE = dateadd(RESERVE_DATE, 1)           -- 日期延后 1 天
+RESERVE_DATE = dateadd(RESERVE_DATE, -3)          -- 日期提前 3 天
+```
+
+<Note>
+  对于日期和时间的加减，推荐使用 `dateadd()` 和 `timeadd()` 函数。直接使用 `+` `-` 进行日期运算可能导致结果含义不明确。
+</Note>
+
+## 条件判断
+
+使用 `if` / `elseif` / `else` 结构进行条件判断。每个 `if` 块必须以 `end` 结尾：
+
+```lua
+if USER_ENABLE then
+    -- 用户启用时执行
+    RESERVE_DATE = dateadd(datenow(), 1)
+end
+```
+
+```lua
+if RESERVE_BEGIN_TIME < time(8, 0) then
+    RESERVE_BEGIN_TIME = time(8, 0)
+else
+    RESERVE_BEGIN_TIME = time(9, 0)
+end
+```
+
+多条件判断：
+
+```lua
+if RESERVE_BEGIN_TIME < time(8, 0) then
+    RESERVE_BEGIN_TIME = time(8, 0)
+elseif RESERVE_BEGIN_TIME > time(22, 0) then
+    RESERVE_BEGIN_TIME = time(22, 0)
+else
+    RESERVE_BEGIN_TIME = RESERVE_BEGIN_TIME
+end
+```
+
+## 比较运算符
+
+| 运算符 | 说明 | 示例 |
+| --- | --- | --- |
+| `==` | 等于 | `USERNAME == "alice"` |
+| `~=` | 不等于 | `USER_ENABLE ~= false` |
+| `>` | 大于 | `RESERVE_BEGIN_TIME > time(9, 0)` |
+| `<` | 小于 | `RESERVE_END_TIME < time(22, 0)` |
+| `>=` | 大于等于 | `RESERVE_BEGIN_TIME >= time(7, 30)` |
+| `<=` | 小于等于 | `RESERVE_END_TIME <= time(23, 0)` |
+
+## 逻辑运算符
+
+| 运算符 | 说明 | 示例 |
+| --- | --- | --- |
+| `and` | 逻辑与 | `USER_ENABLE and RESERVE_BEGIN_TIME < time(12, 0)` |
+| `or` | 逻辑或 | `USERNAME == "alice" or USERNAME == "bob"` |
+| `not` | 逻辑非 | `not USER_ENABLE` |
+
+## 布尔变量判断
+
+对于布尔类型的变量（如 `USER_ENABLE`），可以直接作为条件使用，无需显式比较：
+
+```lua
+-- 推荐写法
+if USER_ENABLE then
+    ...
+end
+
+-- 等价但不推荐
+if USER_ENABLE == true then
+    ...
+end
+```
+
+## 字符串
+
+字符串使用双引号包裹：
+
+```lua
+USERNAME = "20250101001"
+```
+
+<Note>
+  AutoScript 不支持字符串拼接（`..` 运算符）。字符串变量只能通过直接赋值修改。
+</Note>
+
+## 关键字
+
+以下是 AutoScript 中可用的 Lua 关键字：
+
+`if` `elseif` `else` `then` `end` `and` `or` `not` `true` `false`
+
+以下 Lua 标准功能出于安全考虑**不可用**：
+
+- 文件 I/O（`io` 模块）
+- 模块加载（`require`、`dofile`、`loadfile`）
+- 系统命令执行（`os.execute`、`os.exit`）
+- 调试功能（`debug` 模块）
+- 循环语句（`for`、`while`）
+
+<Info>
+  出于安全沙箱限制，AutoScript 不支持循环语句。如果你需要为多个用户设置不同参数，建议使用用户分组功能，配合条件判断实现差异化配置。
+</Info>
