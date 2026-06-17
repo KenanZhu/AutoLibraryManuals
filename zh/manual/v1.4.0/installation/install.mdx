@@ -53,16 +53,23 @@ AutoLibrary 是一款专为北京建筑大学图书馆设计的自动化工具�
   <Step title="安装应用">
     双击打开 `.dmg` 文件，将 `AutoLibrary.app` 拖入 `Applications` 文件夹。
 
-    {/* TODO: 添加 macOS DMG 安装界面截图 */}
     ![macOS DMG 安装界面](/images/v1.4.0/macos-dmg-install.png)
   </Step>
   <Step title="首次启动（需绕过门禁）">
     由于应用未经过 Apple 官方代码签名，首次启动时 macOS 可能会阻止运行。请按以下步骤操作：
 
     1. 双击 `AutoLibrary.app`，系统弹出 "**无法验证开发者**" 提示后点击 [**取消**]
+
+    ![macOS GateKeeper 无法验证开发者](/images/v1.4.0/macos-gatekeeper-unauth.png)
+
     2. 打开系统 [**设置**] → [**隐私与安全性**]
     3. 在页面底部找到关于 AutoLibrary 的拦截提示，点击右侧的 [**仍要打开**]
+
+    ![macOS 隐私与安全性 仍要打开](/images/v1.4.0/macos-privacy-security-still-open.png)
+
     4. 在弹出的对话框中再次确认 [**打开**]
+
+    ![macOS 再次确认打开](/images/v1.4.0/macos-reconfirm-open.png)
 
     <Tip>
       此操作只需执行一次，之后即可正常双击启动。

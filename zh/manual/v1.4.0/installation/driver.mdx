@@ -63,17 +63,10 @@ description: "AutoLibrary 浏览器驱动配置指南 - 自动下载与手动安
 
 <Note>
   macOS 用户请根据 Mac 芯片类型选择对应架构的驱动：
-  - Apple Silicon (M1/M2/M3/M4) → 选择 `arm64` 或 `mac64_m1` 版本
+  - Apple Silicon (M1/M2/M3/...) → 选择 `arm64` 或 `mac64_m1` 版本
   - Intel → 选择 `x64` 或 `mac64` 版本
 
-  下载后，驱动文件通常以可执行文件形式提供。
-
-  如果系统提示无法验证开发者，请在终端中运行：
-  ```bash
-  xattr -d com.apple.quarantine /path/to/driver
-  ```
-
-  如果系统提示无执行权限，请添加执行权限：
+  下载后，驱动文件通常以可执行文件形式提供。如果系统提示无执行权限，请添加执行权限：
   ```bash
   chmod +x /path/to/driver
   ```
