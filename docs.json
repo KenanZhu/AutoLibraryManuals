@@ -150,13 +150,6 @@
                   "zh/autoscript/editor",
                   "zh/autoscript/orchestrator"
                 ]
-              },
-              {
-                "group": "集成",
-                "icon": "link",
-                "pages": [
-                  "zh/autoscript/integration"
-                ]
               }
             ]
           }

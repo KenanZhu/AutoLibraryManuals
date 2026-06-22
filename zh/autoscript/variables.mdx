@@ -55,9 +55,9 @@ end
 ```lua
 -- 使用工具函数创建日期
 RESERVE_DATE = date(2025, 10, 30)           -- 绝对日期
-RESERVE_DATE = datenow()                     -- 今天
-RESERVE_DATE = dateadd(datenow(), 1)         -- 明天
-RESERVE_DATE = strtodate("2025-12-31")       -- 从字符串解析
+RESERVE_DATE = datenow()                    -- 今天
+RESERVE_DATE = dateadd(datenow(), 1)        -- 明天
+RESERVE_DATE = strtodate("2025-12-31")      -- 从字符串解析
 ```
 
 <Warning>
@@ -108,11 +108,11 @@ AutoScript 引擎会在脚本执行前后验证变量类型。以下情况会导
 ```lua
 -- 正确：类型匹配
 RESERVE_DATE = dateadd(datenow(), 1)          -- Date = Date
-USER_ENABLE = true                             -- Boolean = Boolean
+USER_ENABLE = true                            -- Boolean = Boolean
 
 -- 错误：类型不匹配
 RESERVE_DATE = "2025-10-30"                   -- Error: Date ≠ String
-USER_ENABLE = 1                                -- Error: Boolean ≠ Int
+USER_ENABLE = 1                               -- Error: Boolean ≠ Int
 ```
 
 <Tip>
